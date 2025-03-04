@@ -2,19 +2,19 @@ const mongoose = require("../config/database");
 
 const schemaProducto = new mongoose.Schema({
     referencia: {
-        type: [Number, "La referencia debe ser numerica "],
-        required: [true, "El campo debe ser obligatorio"]
+        type: Number,
+        required: true 
     },
     
     nombre: {
-        type: [String, "El nombre debe ser texto"],
-        required: [true, "El nombre debe ser obligatorio"]
+        type: String,
+        required: true
     },
     precio: {
-        type: [Decimal128, "El precio debe tener decimales"],
+        type: mongoose.Types.Decimal128,
         default: 0.0,
-        min: [0,0, "Los precios no pueden ser negativos "]
-    }
+        min: 0.0
+        }
 }, {versionKey: false} )
 
 const producto = mongoose.model("producto", schemaProducto);
